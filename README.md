@@ -1,5 +1,5 @@
 # Data Science Capstone Project
-link to Notebook [Notebook](https://github.com/kjfjose/Coursera_Capstone/blob/master/Coursera_Final_Capstone.ipynb)
+Link to  [GitHub Notebook](https://github.com/kjfjose/Coursera_Capstone/blob/master/Coursera_Final_Capstone.ipynb)
 
 # Introduction/Business problem
 
