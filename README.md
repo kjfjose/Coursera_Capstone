@@ -20,7 +20,6 @@ This section will describe the data analysis and how I used the data to yield th
 
 I cleaned the PSA data and loaded it to the Jupyter Notebook as a Pandas data frame[.](https://en.wikipedia.org/wiki/Districts_of_Cologne) For this, I used the pandas read function. Once I loaded the data, I had to clean it further by renaming two (2) columns for Latitude and Longitude while removing an extra ghost column imported from the file. The table below shows the processed data frame named &quot;NCR\_data.&quot;
 
-**Table 1 NCR\_data data frame**
 
 ![](RackMultipart20210319-4-1nh5dh6_html_a1cbceb437eed165.png)
 
@@ -34,11 +33,11 @@ I used Folium to plot the data points, embedded on an interactive Map, to verify
 
 ![](RackMultipart20210319-4-1nh5dh6_html_53661b778b9ef81a.png)
 
-Figure 2 Plotted points in Folium map
+
 
 Since the coordinates have been collected, I was able to proceed to use the Foursquare API. A search radius of 3000 meters was used to return 1625 data points from each city&#39;s center. It is important to note that Foursquare does not directly return the main category (named &#39;Short Category&#39; in the table) a venue is classified under.
 
-Table 2 NCR\_venue Data Frame with data from Foursquare
+
 
 ![](RackMultipart20210319-4-1nh5dh6_html_c360de51c0b5172e.png)
 
@@ -52,13 +51,13 @@ It will be a good idea to visualize the data. However, with the values returned 
 
 In order to obtain a data frame that contains the totaled summary of available places/businesses in each city, the data frame is first transformed by one-hot encoding (0/1) the venue types and then adding up the values per city.
 
-Table 3 Total Location Types per City
+
 
 ![](RackMultipart20210319-4-1nh5dh6_html_26b0dfc389ce3096.png)
 
 The summarized data frame is further processed using the MinMax Scaler to obtain values between 0 and 1. It is essential to note the arrangement of the index due to the merging of tables later on.
 
-Table 4 Scaled Table of Location Type per City
+
 
 ![](RackMultipart20210319-4-1nh5dh6_html_671c0b360dfe8b73.png)
 
@@ -76,18 +75,18 @@ The same steps were recreated to determine the clusters of restaurants for each 
 
 ![](RackMultipart20210319-4-1nh5dh6_html_d430fcd2272959ba.png)
 
-Figure 4 Code to Filter Food Location Type Data
+
 
 I had determined that the majority of the food-venue category has a value of 1 to 11.6. As much as possible, the data should be flat because I am concerned only with the top cuisines available in Manila.
 
 ![](RackMultipart20210319-4-1nh5dh6_html_5cf3f4ff238cb248.png)
 
-Figure 5 Histogram of Cuisines available in Metro Manila
+
 
 In order to easily remove the unwanted cuisines in the dataset, I used the code in the figure below. The logic behind this is that I collect the unwanted cuisines and save this as a list. From the filtered food data frame, I only selected the rows, _not in_ the list (seen in line 60).
  ![](RackMultipart20210319-4-1nh5dh6_html_5f4dc34d9e431f03.png)
 
-Figure 6 Code to Clean Unwanted Data
+
 
 The data is the one-hot encoded using the mean and was processed using the k-means algorithm with the optimum number of clusters obtained from the Silhouette score.
 
